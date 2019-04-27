@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
+  course = "";
+  image = "https://avatars0.githubusercontent.com/u/6206647?s=460&v=4";
+  courses = ['Angular', 'Spring Boot', 'Laravel']; 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addCourse() {
+    this.courses.unshift(this.course);
+    this.course = "";
   }
 
 }

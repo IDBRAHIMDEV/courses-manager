@@ -8,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class Content1Component implements OnInit {
 
   subTitle = "our first component with angular 7"
-  
+
+  course = "";
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  saySomeThing() {
+    return "salam les amis"
   }
 
 }
