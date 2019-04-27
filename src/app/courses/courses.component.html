@@ -19,7 +19,10 @@
     <hr>
 
     <ul class="list-group">
-      <li *ngFor="let course of courses; index as i" class="list-group-item">{{ course.id }} - {{ course.label }}
+      <li *ngFor="let course of courses; index as i, even as e, odd as o, first as f, last as l" class="list-group-item" [ngClass]="{
+        'list-group-item-primary': o,
+        'list-group-item-warning': e
+      }">{{ course.id }} - {{ course.label }}
         
         <div class="text-right">
 
