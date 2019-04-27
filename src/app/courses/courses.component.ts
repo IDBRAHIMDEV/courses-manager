@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-courses',
@@ -40,7 +41,30 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(index) {
-    this.courses.splice(index, 1);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        
+        this.courses.splice(index, 1);
+
+        Swal.fire({
+          title: 'This course is deleted !',
+          text: 'You will not be able to recover this imaginary file!',
+          type: 'success',
+          timer: 3000
+        })
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      }
+    })
+    
   }
 
 }
