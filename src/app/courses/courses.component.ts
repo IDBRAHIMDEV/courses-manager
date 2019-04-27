@@ -7,17 +7,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  course = "";
-  image = "https://avatars0.githubusercontent.com/u/6206647?s=460&v=4";
-  courses = ['Angular', 'Spring Boot', 'Laravel']; 
+  image = "";
+  onEdit = false;
+  
+  courses = [
+    {id: 1, label: "Angular"},
+    {id: 2, label: "VueJS"},
+    {id: 3, label: "Java"},
+    {id: 4, label: "Php"}
+  ];
+
+  course = {id: this.courses.length + 1, label: ""};
+
   constructor() { }
 
   ngOnInit() {
   }
 
   addCourse() {
-    this.courses.unshift(this.course);
-    this.course = "";
+    this.courses.push(this.course);
+    this.course = {id: this.courses.length + 1, label: ""};
+  }
+
+  editCourse(course) {
+    this.course = course;
+    this.onEdit = true;
+  }
+
+  updateCourse() {
+    this.onEdit = false;
+    this.course = {id: 0, label: ""};
+  }
+
+  deleteCourse(index) {
+    this.courses.splice(index, 1);
   }
 
 }

@@ -6,16 +6,34 @@
      
      <img [src]="image" alt="">
 
-    <input [(ngModel)]="course" type="text" class="form-control">
+    <input (keyup.enter)="addCourse()" [(ngModel)]="course.label" type="text" class="form-control">
 
-    <button (click)="addCourse()" class="btn btn-primary btn-block">
-      <i class="fa fa-plus"></i> Add new Course
+    <button *ngIf="onEdit" (click)="updateCourse()" class="btn btn-warning btn-block">
+      <i class="fa fa-refresh"></i> Update Course
     </button>
+
+    <button *ngIf="!onEdit" (click)="addCourse()" class="btn btn-primary btn-block">
+        <i class="fa fa-plus"></i> Add new Course
+      </button>
    
     <hr>
 
     <ul class="list-group">
-      <li *ngFor="let course of courses" class="list-group-item">{{ course }}</li>
+      <li *ngFor="let course of courses; index as i" class="list-group-item">{{ course.id }} - {{ course.label }}
+        
+        <div class="text-right">
+
+          <button (click)="editCourse(course)" class="btn btn-sm mr-1 btn-warning">
+            <i class="fa fa-pencil"></i>
+          </button>
+
+          <button (click)="deleteCourse(i)" class="btn btn-sm btn-danger">
+            <i class="fa fa-times"></i>
+          </button>
+
+        </div>
+
+      </li>
     </ul>
 
   </div>
