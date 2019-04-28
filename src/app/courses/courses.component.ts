@@ -13,7 +13,7 @@ export class CoursesComponent implements OnInit {
   onEdit = false;
   
   courses = [
-    {id: 1, label: "Angular", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita.", isFavoris: true, vote: {like: 5, disLike: 0}, price: 85.5478, published: new Date()},
+    {id: 1, label: "Angular", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita.", isFavoris: true, vote: {like: 5, disLike: 0}, price: 85.6, published: new Date()},
     {id: 2, label: "VueJS", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita.", isFavoris: true, vote: {like: 1500, disLike: 80}, price: 152.9978, published: new Date()},
     {id: 3, label: "Java", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita.", isFavoris: false, vote: {like: 50, disLike: 10}, price: 74.5668, published: new Date()},
     {id: 4, label: "Php", description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam, expedita.", isFavoris: true, vote: {like: 0, disLike: 0}, price: 452.4321, published: new Date()}
