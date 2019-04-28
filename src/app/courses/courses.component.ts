@@ -79,4 +79,12 @@ export class CoursesComponent implements OnInit {
     course.vote.disLike++;
   }
 
+  infoParent(event, course) {
+    if(event.type == "like") {
+       course.vote.like = event.data
+    }else {
+      course.vote.disLike = event.data
+    }
+  }
+
 }

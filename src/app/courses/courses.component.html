@@ -32,7 +32,9 @@
            dislike: {{ course.vote.disLike }}
          <app-vote 
            [myLike]="course.vote.like" 
-           [myDislike]="course.vote.disLike">
+           [myDislike]="course.vote.disLike"
+           (voteChildToParent)="infoParent($event, course)"
+          >
          </app-vote>
 
         </p>
