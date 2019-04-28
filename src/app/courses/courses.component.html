@@ -22,7 +22,20 @@
       <li *ngFor="let course of courses; index as i, even as e, odd as o, first as f, last as l" class="list-group-item" [ngClass]="{
         'list-group-item-primary': o,
         'list-group-item-warning': e
-      }">{{ course.id }} - {{ course.label }}
+      }"> <i (click)="toggleFavoris(course)" class="fa" [ngClass]="{
+        'fa-star': course.isFavoris,
+        'fa-star-o': !course.isFavoris
+      }"></i>  {{ course.id }} - {{ course.label }}
+
+        <p>
+          <button (click)="like(course)" class="btn btn-sm btn-light mr-2">
+            <i class="fa fa-thumbs-up"></i> {{ course.vote.like }}
+          </button>
+          
+          <button (click)="dislike(course)" class="btn btn-sm btn-light">
+            <i class="fa fa-thumbs-down"></i> {{ course.vote.disLike }}
+          </button>
+        </p>
         
         <div class="text-right">
 

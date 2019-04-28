@@ -12,13 +12,13 @@ export class CoursesComponent implements OnInit {
   onEdit = false;
   
   courses = [
-    {id: 1, label: "Angular"},
-    {id: 2, label: "VueJS"},
-    {id: 3, label: "Java"},
-    {id: 4, label: "Php"}
+    {id: 1, label: "Angular", isFavoris: true, vote: {like: 0, disLike: 0}},
+    {id: 2, label: "VueJS", isFavoris: true, vote: {like: 0, disLike: 0}},
+    {id: 3, label: "Java", isFavoris: false, vote: {like: 0, disLike: 0}},
+    {id: 4, label: "Php", isFavoris: true, vote: {like: 0, disLike: 0}}
   ];
 
-  course = {id: this.courses.length + 1, label: ""};
+  course = {id: this.courses.length + 1, label: "", isFavoris: true, vote: {like: 0, disLike: 0}};
 
   constructor() { }
 
@@ -27,7 +27,7 @@ export class CoursesComponent implements OnInit {
 
   addCourse() {
     this.courses.push(this.course);
-    this.course = {id: this.courses.length + 1, label: ""};
+    this.course = {id: this.courses.length + 1, label: "", isFavoris: true, vote: {like: 0, disLike: 0}};
   }
 
   editCourse(course) {
@@ -37,7 +37,7 @@ export class CoursesComponent implements OnInit {
 
   updateCourse() {
     this.onEdit = false;
-    this.course = {id: 0, label: ""};
+    this.course = {id: 0, label: "", isFavoris: true, vote: {like: 0, disLike: 0}};
   }
 
   deleteCourse(index) {
@@ -65,6 +65,18 @@ export class CoursesComponent implements OnInit {
       }
     })
     
+  }
+
+  toggleFavoris(course) {
+    course.isFavoris = !course.isFavoris
+  }
+
+  like(course) {
+    course.vote.like++;
+  }
+
+  dislike(course) {
+    course.vote.disLike++;
   }
 
 }
