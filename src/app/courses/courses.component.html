@@ -28,13 +28,13 @@
       }"></i>  {{ course.id }} - {{ course.label }}
 
         <p>
-          <button (click)="like(course)" class="btn btn-sm btn-light mr-2">
-            <i class="fa fa-thumbs-up"></i> {{ course.vote.like }}
-          </button>
-          
-          <button (click)="dislike(course)" class="btn btn-sm btn-light">
-            <i class="fa fa-thumbs-down"></i> {{ course.vote.disLike }}
-          </button>
+           like: {{ course.vote.like }} 
+           dislike: {{ course.vote.disLike }}
+         <app-vote 
+           [myLike]="course.vote.like" 
+           [myDislike]="course.vote.disLike">
+         </app-vote>
+
         </p>
         
         <div class="text-right">

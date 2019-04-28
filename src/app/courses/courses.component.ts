@@ -12,9 +12,9 @@ export class CoursesComponent implements OnInit {
   onEdit = false;
   
   courses = [
-    {id: 1, label: "Angular", isFavoris: true, vote: {like: 0, disLike: 0}},
-    {id: 2, label: "VueJS", isFavoris: true, vote: {like: 0, disLike: 0}},
-    {id: 3, label: "Java", isFavoris: false, vote: {like: 0, disLike: 0}},
+    {id: 1, label: "Angular", isFavoris: true, vote: {like: 5, disLike: 0}},
+    {id: 2, label: "VueJS", isFavoris: true, vote: {like: 1500, disLike: 80}},
+    {id: 3, label: "Java", isFavoris: false, vote: {like: 50, disLike: 10}},
     {id: 4, label: "Php", isFavoris: true, vote: {like: 0, disLike: 0}}
   ];
 
