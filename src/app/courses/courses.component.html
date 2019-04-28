@@ -17,8 +17,18 @@
       </button>
    
     <hr>
+    
+    <div>
+      <button (click)="list=true" class="btn btn-sm btn-light">
+        <i class="fa fa-list"></i>
+      </button>
 
-    <ul class="list-group">
+      <button (click)="list=false" class="btn btn-sm btn-light">
+          <i class="fa fa-th"></i>
+        </button>
+    </div>
+
+    <ul class="list-group" *ngIf="list">
       <li *ngFor="let course of courses; index as i, even as e, odd as o, first as f, last as l" class="list-group-item" [ngClass]="{
         'list-group-item-primary': o,
         'list-group-item-warning': e
@@ -26,6 +36,8 @@
         'fa-star': course.isFavoris,
         'fa-star-o': !course.isFavoris
       }"></i>  {{ course.id }} - {{ course.label }}
+      
+      
 
         <p>
            like: {{ course.vote.like }} 
@@ -53,6 +65,46 @@
 
       </li>
     </ul>
+    
+    <table class="table" *ngIf="!list">
+      <thead>
+        <tr>
+          <th>Course</th>
+          <th>Price</th>
+          <th>Published</th>
+          <th>Vote</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td scope="row"> 
+              <h3>{{ course.label }}</h3>
+              <p>{{ course.description }}</p>
+          </td>
+          <td>{{ course.price }}</td>
+          <td>{{ course.published }}</td>
+          <td nowrap>
+              <app-vote 
+                [myLike]="course.vote.like" 
+                [myDislike]="course.vote.disLike"
+                (voteChildToParent)="infoParent($event, course)"
+                >
+              </app-vote>
+          </td>
+          <td class="text-right" nowrap>
+              <button (click)="editCourse(course)" class="btn btn-sm mr-1 btn-warning">
+                  <i class="fa fa-pencil"></i>
+                </button>
+      
+                <button (click)="deleteCourse(i)" class="btn btn-sm btn-danger">
+                  <i class="fa fa-times"></i>
+                </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
 
   </div>
 </div>
