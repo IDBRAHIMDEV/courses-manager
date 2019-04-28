@@ -1,8 +1,28 @@
 <!-- 
  .row>.col-md-12>h1{List of posts}+table.table.table-striped>(thead>tr>th*4)+(tbody>tr>td*4) -->
- <div class="row">
+ <div class="row mt-3">
    <div class="col-md-12">
      <h1>List of posts</h1>
+    
+     <div class="my-2">
+        <div class="form-group">
+            <label for=""></label>
+            <input [(ngModel)]="post.title" placeholder="new title of post" 
+            type="text" class="form-control">
+         </div>
+     
+          <div class="form-group">
+            <label for=""></label>
+           <textarea [(ngModel)]="post.body" placeholder="new body of post" 
+           class="form-control" cols="30" rows="4"></textarea>
+         </div>
+
+          <button (click)="persistPost()" class="btn btn-primary btn-block">
+             <i class="fa fa-send"></i> Add Post
+          </button>  
+     </div>
+     
+
      <table class="table table-striped">
        <thead>
          <tr>
@@ -13,7 +33,7 @@
          </tr>
        </thead>
        <tbody>
-         <tr *ngFor="let post of posts">
+         <tr *ngFor="let post of posts; index as i">
            <td>{{ post.id }}</td>
            <td>{{ post.title }}</td>
            <td>{{ post.body }}</td>
@@ -23,7 +43,7 @@
                 <i class="fa fa-pencil"></i>
               </button>
 
-              <button class="btn btn-sm btn-danger">
+              <button (click)="deletePost(post.id, i)" class="btn btn-sm btn-danger">
                 <i class="fa fa-trash"></i>
               </button>
            </td>
